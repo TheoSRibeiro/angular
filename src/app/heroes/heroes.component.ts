@@ -18,7 +18,18 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroService.getHeroes().subscribe((heroes) => (this.heroes) = heroes);
+    // this.heroService.getHeroes().subscribe((heroes) => (this.heroes) = heroes);
+    this.heroService.getHeroes().subscribe(
+      (value) => {
+        this.heroes = value;
+      },
+      (err) => {
+        console.log(err);
+      },
+      () => {
+        console.log("finalizado com sucesso!");
+      }
+    );
   }
 
   onSelect(hero: Hero): void{
